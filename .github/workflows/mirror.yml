@@ -1,0 +1,29 @@
+
+name: Mirror PythonStudy
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  mirror:
+    if: github.repository != 'Arthur-bliper/PythonStudy'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Push to student repository
+        env:
+          MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
+        run: |
+          git remote add student \
+            "https://x-access-token:${MIRROR_TOKEN}@github.com/Arthur-bliper/PythonStudy.git"
+
+          git push student HEAD:refs/heads/master --force
