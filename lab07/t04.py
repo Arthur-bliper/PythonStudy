@@ -9,7 +9,7 @@ def nsd(n, m):
     while m != 0:
         k = n % m
         n, m = m, k
-    return int(n)
+    return n
 # n  m    k
 # 12 15
 # 15 12
@@ -18,5 +18,5 @@ def nsd(n, m):
 # 3 % 0 !
 
 ###### Main ######
-a,b = [float(x) for x in input().split()]
+a,b = [int(x) for x in input().split()]
 print(nsd(a,b))
