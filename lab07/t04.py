@@ -20,3 +20,6 @@ def nsd(n, m):
 ###### Main ######
 a,b = [int(x) for x in input().split()]
 print(nsd(a,b))
+
+# def nsk(n,m):
+#     return (a*b)/nsd(n,m)
